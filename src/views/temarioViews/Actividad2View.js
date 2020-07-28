@@ -10,6 +10,8 @@ import {
   Label,
   Input,
 } from 'reactstrap'
+
+import AuthService from "../../services/AuthService";
 import actividad2 from '../../assets/img/usoB/actividad2.png'
 import API_CCS from '../../services/API_CCS'
 const API = new API_CCS()
@@ -21,6 +23,7 @@ class ActividadView extends Component {
 
   constructor(props) {
     super(props)
+    this.Auth = new AuthService();
     this.state = {
       palabra1Acuerto1: '',
       palabra1Acuerto2: '',
@@ -40,6 +43,8 @@ class ActividadView extends Component {
       palabra6Acuerto1: '',
       palabra6Acuerto2: '',
       palabra6Acuerto3: '',
+      id_ccs: this.Auth.getProfile().id_ccs,
+      form: "usoB",
     }
   }
 
@@ -51,8 +56,8 @@ class ActividadView extends Component {
 
   async onSave(e) {
     try {
-      var respuesta = await API.actividad2(this.state)
-      alert('Se guardo la encuesta número ' + respuesta[0].id)
+      var respuesta = await API.guardaActividad(this.state)
+      alert('Se guardo la actividad, con id: ' + respuesta[0].id)
     } catch (err) {
       console.log('loggea si hay un error')
     }
