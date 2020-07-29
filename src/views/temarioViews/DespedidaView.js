@@ -17,16 +17,12 @@ class PresentacionView extends Component {
         <CardBody className="">
           <Row>
             <Col xs="12" sm="12" md="12" className="centrado-fila mt-3">
-       
-                
                 <ReactPlayer
                   className="animated bounceInRight delay-0s"
                   width="65%"
                   url={usoB}
                   controls
-             
                 />
-           
             </Col>
           </Row>
         </CardBody>
