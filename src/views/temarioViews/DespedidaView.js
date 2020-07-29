@@ -20,7 +20,7 @@ class PresentacionView extends Component {
        
                 
                 <ReactPlayer
-                  className="animated bounceInRight delay-5s"
+                  className="animated bounceInRight delay-0s"
                   width="65%"
                   url={usoB}
                   controls
