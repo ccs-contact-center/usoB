@@ -14,7 +14,7 @@ import actividad1 from '../../assets/img/usoB/actividad1.png'
 
 import AuthService from "../../services/AuthService";
 import API_CCS from '../../services/API_CCS'
-const API = new API_CCS()
+const API = new API_CCS();
 
 class ActividadView extends Component {
   loading = () => (
