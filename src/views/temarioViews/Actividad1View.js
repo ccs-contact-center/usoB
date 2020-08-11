@@ -11,10 +11,10 @@ import {
   Input,
 } from 'reactstrap'
 import actividad1 from '../../assets/img/usoB/actividad1.png'
-
+import swal from "sweetalert"
 import AuthService from "../../services/AuthService";
 import API_CCS from '../../services/API_CCS'
-const API = new API_CCS();
+const API = new API_CCS()
 
 class ActividadView extends Component {
   loading = () => (
@@ -36,7 +36,7 @@ class ActividadView extends Component {
       checkboxAcierto9: '',
       checkboxAcierto10: '',
       id_ccs: this.Auth.getProfile().id_ccs,
-      form: "usoB",
+      form: "usoB-1",
     }
   }
 
@@ -48,10 +48,37 @@ class ActividadView extends Component {
 
   async onSave(e) {
     try {
-      var respuesta = await API.guardaActividad(this.state)
-      alert('Se guardo la actividad, con id: ' + respuesta[0].id)
+      var respuesta = await API.guardaActividad(this.state);
+
+      swal({
+        title: "Status Actividad",
+        text: "Se guardo la actividad: 1, con id: " + respuesta[0].id,
+        icon: "success",
+        dangerMode: true,
+        button: {
+          text: "Aceptar",
+          value: true,
+          visible: true,
+          className: "btn btn-primary",
+          reset: true,
+        },
+      });
+      
+      // alert("Se guardo la actividad: 1, con id: " + respuesta[0].id);
     } catch (err) {
-      console.log('loggea si hay un error')
+      swal({
+        title: "Status Actividad",
+        text: "No se guardo la actividad: 1, Intenta de nuevo. ",
+        icon: "error",
+        dangerMode: true,
+        button: {
+          text: "Cerrar",
+          value: true,
+          visible: true,
+          className: "btn btn-primary ",
+        },
+      });
+      console.log("loggea si hay un error");
     }
   }
 
