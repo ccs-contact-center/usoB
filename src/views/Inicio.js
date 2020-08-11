@@ -42,7 +42,7 @@ class Inicio extends Component {
         <Card>
           {this.state.index === 0 ? (
        
-            <BienvenidaView />
+            <Actividad3View />
           ) : this.state.index === 1 ? (
             <TemaUnoView />
           ) : this.state.index === 2 ? (
